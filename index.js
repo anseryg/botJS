@@ -1,8 +1,3 @@
-// ==================================================
-// BOT WHATSAPP COM BAILEYS (ESM) – BASE PRO COMPLETA
-// Admin / Grupo / Mídia / Estrutura escalável
-// ==================================================
-
 import makeWASocket, {
   useMultiFileAuthState,
   fetchLatestBaileysVersion,
@@ -23,19 +18,18 @@ import os from 'os'
 
 ffmpeg.setFfmpegPath(ffmpegPath)
 
-// ==================================================
 // CONFIG
-// ==================================================
+
 const config = {
-  prefix: '$',
-  botName: 'AnseryBOT',
-  ownerName: "G'",
+  prefix: '$', // <<< Prefixo
+  botName: 'AnseryBOT', // <<< Nome do BOT
+  ownerName: "G'", // <<< Nome do Dono
   owner: ['5518997553725'] // <<< SEU NÚMERO AQUI (DDD + número)
 }
 
-// ==================================================
-// START BOT
-// ==================================================
+
+// config pra inicia u bot
+
 async function startBot() {
   const { state, saveCreds } = await useMultiFileAuthState('auth')
   const { version } = await fetchLatestBaileysVersion()
@@ -61,9 +55,8 @@ async function startBot() {
     }
   })
 
-  // ==================================================
-  // MESSAGE HANDLER
-  // ==================================================
+  // message handler
+
   sock.ev.on('messages.upsert', async ({ messages }) => {
     const msg = messages[0]
     if (!msg?.message) return
@@ -145,9 +138,8 @@ async function startBot() {
   })
 }
 
-// ==================================================
 // FUNÇÕES GERAIS
-// ==================================================
+
 const antilinkGroups = new Set()
 
 function reply(sock, to, msg, text) {
@@ -626,3 +618,4 @@ function gerarMenu() {
 }
 
 startBot()
+
